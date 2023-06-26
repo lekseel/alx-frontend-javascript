@@ -1,10 +1,12 @@
 export default function createIteratorObject(report) {
-  const allEmployees = [];
-
-  for (const department in report) {
-    const employees = report[department].employees;
-    allEmployees.push(...employees);
+  const emp = [];
+  /* eslint-disable no-unused-vars */
+  for (const [department, employees] of Object.entries(report.allEmployees)) {
+    for (const employe of employees) {
+      emp.push(employe);
+    }
   }
+  /* eslint-enable no-unused-vars */
 
-  return allEmployees[Symbol.iterator]();
+  return emp;
 }
